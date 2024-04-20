@@ -8,7 +8,8 @@ Google charts query compatibility service. However, it is not a tool for `GET` R
 
 # Usage
 ## Query mode
-Simply replace `chart.googleapis.com` with `tetunori.github.io`.
+Simply replace `chart.googleapis.com` with `tetunori.github.io` and access it. Then, you can automatically download a `png` image of QR code and also you can edit QR code with some options or data on the site.
+
 ```
 https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=Hello+world
 ```
@@ -16,7 +17,7 @@ https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=Hello+world
 ```
 https://tetunori.github.io/chart?chs=200x200&cht=qr&chl=Hello+world
 ```
-On the query specification, please refer to the following [Syntax](#Syntax📖) section.
+On the query specification, please refer to the following [Syntax](https://github.com/tetunori/chart?tab=readme-ov-file#syntax) section.
 
 ## Edit mode
 If you access a [URL below](https://tetunori.github.io/chart) without any query, you can edit on the site.

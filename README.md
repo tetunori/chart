@@ -3,14 +3,28 @@ Version 0.7.0
 <img src="./images/screenShot1.png" width="800px"/>
 
 # Description
-Google charts query compatibility service. (Currently, "QR code" service only)
+Google charts query compatibility service. However, it is not a tool for `GET` Request, but a website supplying download/edit QR codes according to the request.
+* Currently, this tool supplies "QR code" service only.
 
 # Usage
 ## Query mode
-⭐
+Simply replace `chart.googleapis.com` with `tetunori.github.io`.
+```
+https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=Hello+world
+        ^^^^^^^^^^^^^^^^^^^^
+```
+👇
+```
+https://tetunori.github.io/chart?chs=200x200&cht=qr&chl=Hello+world
+        ^^^^^^^^^^^^^^^^^^
+```
+On the query specification, please refer to the following [Syntax](#Syntax📖) section.
 
 ## Edit mode
-⭐
+If you access a [URL below](https://tetunori.github.io/chart) without any query, you can edit on the site.
+```
+https://tetunori.github.io/chart
+```
 
 # Syntax📖
 | Parameter | Required or Optional | Description |

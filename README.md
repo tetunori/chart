@@ -11,12 +11,10 @@ Google charts query compatibility service. However, it is not a tool for `GET` R
 Simply replace `chart.googleapis.com` with `tetunori.github.io`.
 ```
 https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=Hello+world
-        ^^^^^^^^^^^^^^^^^^^^
 ```
 👇
 ```
 https://tetunori.github.io/chart?chs=200x200&cht=qr&chl=Hello+world
-        ^^^^^^^^^^^^^^^^^^
 ```
 On the query specification, please refer to the following [Syntax](#Syntax📖) section.
 

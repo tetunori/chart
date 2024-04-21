@@ -19,13 +19,13 @@ https://tetunori.github.io/chart?chs=200x200&cht=qr&chl=Hello+world
 ```
 On the query specification, please refer to the following [Syntax📖](https://github.com/tetunori/chart?tab=readme-ov-file#syntax) section.
 
-## Edit mode✍
+## Edit mode📝
 If you access a [URL below](https://tetunori.github.io/chart) without any query, you can edit on the site.
 ```
 https://tetunori.github.io/chart
 ```
 
-# Syntax📄
+# Syntax📖
 | Parameter | Required or Optional | Description |
 | --- | --- | --- |
 | `cht=qr` | Required | Chart type. Currently, support only `qr` a QR code. |

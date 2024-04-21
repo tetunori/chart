@@ -1,5 +1,5 @@
 # tetunori Charts📈📊
-Version 0.7.0  
+Version 0.7.1  
 <img src="./images/screenShot1.png" width="800px"/>
 
 # Description🖊️
@@ -33,6 +33,8 @@ https://tetunori.github.io/chart
 | `chl=<data>` | Required | The data to encode. Data can be digits (0-9), alphanumeric characters, binary bytes of data, or Kanji. You cannot mix data types within a QR code. The data must be UTF-8 URL-encoded. Input like `chl=xxx`.|
 | `choe` | Unsupported | Unsupported in this service. |
 | `chld=<error_correction_level>\|<margin>` | Optional | 1. error_correction_level: QR codes support four levels of error correction to enable recovery of missing, misread, or obscured data. Greater redundancy is achieved at the cost of being able to store less data.<br> - `L`: [Default] Allows recovery of up to 7% data loss<br> - `M`: Allows recovery of up to 15% data loss<br> - `Q`: Allows recovery of up to 25% data loss<br> - `H`: Allows recovery of up to 30% data loss <br><br> 2. margin: The width of the white border around the data portion of the code. This is in rows, not in pixels. (See below to learn what rows are in a QR code.) The default value is `4`.<br><br> Input like `chld=L\|3`. |
+| `bgcl=<background_color>` | Optional | Background color. you can also use alpha value. Default value is `ffffff`(white). Input like `bgcl=ffffff` or `bgcl=ffffffff`.|
+| `clcl=<cell_color>` | Optional | Cell color. Default value is `000000`(black). Input like `clcl=000000`.|
 
 # License⚖️
 Copyright (c) 2024 [Tetsunori Nakayama](https://github.com/tetunori). MIT License.

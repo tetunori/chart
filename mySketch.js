@@ -2,10 +2,13 @@
 const gQROptions = {
   width: 200,
   height: 200,
-  targetData: "xxx",
-  errorCorrectionLevel: "L",
+  targetData: 'xxx',
+  errorCorrectionLevel: 'L',
   margin: 4,
   isAutoSave: true,
+  bgColor: '#ffffff',
+  bgAlpha: 255,
+  cellColor: '#000000',
 };
 
 // QR Code Graphics
@@ -23,49 +26,47 @@ function setup() {
     opt.isAutoSave = false;
   }
 
-  if (!urlSP.has("chl") || urlSP.get("chl") === "") {
+  if (!urlSP.has('chl') || urlSP.get('chl') === '') {
     // There is no target text data...
     if (urlSP.size > 0) {
       // If there exists 1 or more queries, we need data!
-      console.error("Please input a target data!");
+      console.error('Please input a target data!');
     }
   }
 
-  if (!urlSP.has("cht") || urlSP.get("cht") !== "qr") {
+  if (!urlSP.has('cht') || urlSP.get('cht') !== 'qr') {
     // Specify not any chart mode.
     if (urlSP.size > 0) {
       console.log('Please add "&cht" query like "&cht=qr" to URL.');
     }
   }
 
-  if (urlSP.has("choe")) {
-    console.error(
-      'We do not support "choe" option. UTF-8 is selected automatically.'
-    );
+  if (urlSP.has('choe')) {
+    console.error('We do not support "choe" option. UTF-8 is selected automatically.');
   }
 
   // Handle Queries
   for (const [key, val] of urlSP) {
-    // console.log(`${key}: ${val}`)
+    // console.log(`${key}: ${val}`);
 
     // Target text data
-    if (key === "chl") {
+    if (key === 'chl') {
       // console.log(val)
       opt.targetData = val;
-      if (opt.targetData === "") {
-        opt.targetData = "xxx";
+      if (opt.targetData === '') {
+        opt.targetData = 'xxx';
       }
     }
 
     // Width/Height
-    if (key === "chs") {
-      const widthStr = val.substring(0, val.indexOf("x"));
+    if (key === 'chs') {
+      const widthStr = val.substring(0, val.indexOf('x'));
       opt.width = parseInt(widthStr, 10);
       if (opt.width < 0) {
         opt.width = 200;
       }
 
-      const heightIndex = val.indexOf("x") + 1;
+      const heightIndex = val.indexOf('x') + 1;
       const heightStr = val.substring(heightIndex);
       opt.height = parseInt(heightStr, 10);
       if (opt.height < 0) {
@@ -74,22 +75,43 @@ function setup() {
     }
 
     // Other options
-    if (key === "chld") {
+    if (key === 'chld') {
       // console.log(val)
 
       // Error Correction Level
       let ecl = val.charAt(0);
-      if (!["H", "Q", "M", "L"].includes(ecl)) {
-        ecl = "L";
+      if (!['H', 'Q', 'M', 'L'].includes(ecl)) {
+        ecl = 'L';
       }
       opt.errorCorrectionLevel = ecl;
 
       // Margin setting
-      const marginIndex = val.indexOf("|") + 1;
+      const marginIndex = val.indexOf('|') + 1;
       const marginStr = val.substring(marginIndex);
       opt.margin = parseInt(marginStr, 10);
       if (isNaN(opt.margin) || opt.margin < 0) {
         opt.margin = 4;
+      }
+    }
+
+    // Background color
+    if (key === 'bgcl') {
+      // console.log(val)
+      if (val === '') {
+        opt.bgColor = '#ffffff';
+        opt.bgAlpha = 255;
+      }else{
+        opt.bgColor = '#' + val.substring(0,6);
+        opt.bgAlpha = alpha(color('#' + val));
+      }
+    }
+
+    // Cell color
+    if (key === 'clcl') {
+      // console.log(val)
+      opt.cellColor = '#' + val.substring(0,6);
+      if (opt.cellColor === '') {
+        opt.cellColor = '#000000';
       }
     }
   }
@@ -123,16 +145,14 @@ const drawQRCode = () => {
     width: opt.width,
     margin: opt.margin,
     errorCorrectionLevel: opt.errorCorrectionLevel,
+    color: {
+      dark: opt.cellColor + 'ff',
+      light: opt.bgColor + (opt.bgAlpha < 0x10 ? '0' : '') + opt.bgAlpha.toString(16),
+    },
   });
 
   // Paste QR Graphic to p5 canvas
-  image(
-    gQRGraphic,
-    width / 2 - opt.width / 2,
-    height / 2 - opt.height / 2,
-    opt.width,
-    opt.height
-  );
+  image(gQRGraphic, width / 2 - opt.width / 2, height / 2 - opt.height / 2, opt.width, opt.height);
 };
 
 function draw() {
@@ -145,6 +165,9 @@ function draw() {
   opt.targetData = QRCodeOptions.targetData;
   opt.errorCorrectionLevel = QRCodeOptions.errorCorrectionLevel;
   opt.margin = QRCodeOptions.margin;
+  opt.bgColor = QRCodeOptions.bgColor;
+  opt.bgAlpha = QRCodeOptions.bgAlpha;
+  opt.cellColor = QRCodeOptions.cellColor;
 
   // Draw QR Code
   drawQRCode();

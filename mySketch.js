@@ -100,8 +100,8 @@ function setup() {
       if (val === '') {
         opt.bgColor = '#ffffff';
         opt.bgAlpha = 255;
-      }else{
-        opt.bgColor = '#' + val.substring(0,6);
+      } else {
+        opt.bgColor = '#' + val.substring(0, 6);
         opt.bgAlpha = alpha(color('#' + val));
       }
     }
@@ -109,7 +109,7 @@ function setup() {
     // Cell color
     if (key === 'clcl') {
       // console.log(val)
-      opt.cellColor = '#' + val.substring(0,6);
+      opt.cellColor = '#' + val.substring(0, 6);
       if (opt.cellColor === '') {
         opt.cellColor = '#000000';
       }
@@ -155,6 +155,21 @@ const drawQRCode = () => {
   image(gQRGraphic, width / 2 - opt.width / 2, height / 2 - opt.height / 2, opt.width, opt.height);
 };
 
+const drawCopyRight = () => {
+  push();
+  text(
+    'Hosted on GitHub. Version 0.7.2. Copyright (c) 2024 Tetsunori Nakayama. MIT License.',
+    15,
+    height - 40
+  );
+  text(
+    'QR Code is registered trademarks of DENSO WAVE INCORPORATED in Japan and in other countries..',
+    15,
+    height - 20
+  );
+  pop();
+};
+
 function draw() {
   background(220);
 
@@ -171,6 +186,8 @@ function draw() {
 
   // Draw QR Code
   drawQRCode();
+
+  drawCopyRight();
 }
 
 // For debug

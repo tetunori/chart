@@ -1,5 +1,5 @@
 # tetunori Charts📈📊
-Version 0.7.1  
+Version 0.7.2  
 <img src="./images/screenShot1.png" width="800px"/>
 
 # Description🖊️

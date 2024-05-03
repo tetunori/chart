@@ -12,6 +12,9 @@ const utilities = {
   Download: () => {
     saveImage(gQRGraphic);
   },
+  GitHub: () => {
+    window.open('https://github.com/tetunori/chart', '_blank');
+  },
 };
 
 const prepareDatGUI = (opt) => {
@@ -47,6 +50,7 @@ const prepareDatGUI = (opt) => {
 
   //  -- Utilities
   gui.add(utilities, 'Init');
+  gui.add(utilities, 'GitHub');
   gui.add(utilities, 'Download');
 };
 
